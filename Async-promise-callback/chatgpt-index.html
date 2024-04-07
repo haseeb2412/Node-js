@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chartgpt-01</title>
+</head>
+<body>  
+        <script>
+            // callbacks----------------------
+
+            // function getData(callback){
+            //     setTimeout(() => {
+            //         const data ={ id: "103",name:"muhammad haseeb"};
+            //         callback(data);
+            //     }, 2000);
+            // }
+
+            // usage of fetch data with a callback
+
+            // getData((data)=>{
+            //     console.log("Data Received :",data.id);
+            // })
+            
+
+            //  Promises ---------------------
+
+            // function getData(){
+            //     return new Promise ((resolve,reject)=>{
+            //         setTimeout(() => {
+            //         const data ={ id: "103",name:"muhammad haseeb"};
+            //         let error =true;
+            //         if(data && error==false){
+            //             resolve(data);
+            //         }else{
+            //             reject("Error")
+            //         }
+            //     }, 2000);
+            //     })
+                
+            // }
+
+            // getData().then((data)=>{
+            //     console.log("Data received:",data);
+            // }).catch((error)=>{
+            //     console.log("error:",error);
+            // })
+
+
+            // Async and Await --------------------
+
+
+            function Data(){
+                return new Promise ((resolve,reject)=>{
+                    setTimeout(() => {
+                    const data ={ id: "103",name:"muhammad haseeb"};
+                    let error =false;
+                    if(data && error==false){
+                        resolve(data);
+                    }else{
+                        reject("Error")
+                    }
+                }, 2000);
+                })
+                
+            }
+
+            async function getData(){
+                try {
+                    const data = await Data();
+                    console.log("data receieeeved:",data);
+                } catch (error) {
+                    console.log("error:",error);
+                }
+            }
+            getData();
+        </script>
+    
+</body>
+</html>

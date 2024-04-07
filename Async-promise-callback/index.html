@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async-promise-callback</title>
+</head>
+<body>
+    <script>
+
+        //problem statment---------------------------------
+
+        const datas = [
+            {name:"haseeb", profession:"softare-engineer"},
+            {name:"areeb", profession:"softare-engineer"}
+        ]
+
+
+// function to show the data
+
+
+// problem ---  when i set a time of createData is 2 sec and get Data is 1 sec then only my getData value shows
+
+
+
+// this is the code of setTimeOut 
+
+// function getData(){
+
+//     setTimeout(() => {
+//     let output='';
+//         datas.forEach((data,index)=>{
+//             output += `<li>${data.name}</li>`;
+//         })
+//         document.body.innerHTML=output;
+//     }, 2000);
+// }
+
+// getData();
+
+
+// function createData(newdata){
+//     setTimeout(() => {
+//         datas.push(newdata);
+//     }, 1000);
+//     // document.write(datas);
+
+// }
+
+// createData({name:"iftikaar",profession:"software-engineer"})
+
+
+
+// solve the problem by using callback---------------------------
+
+
+// function getData(){
+
+// setTimeout(() => {
+// let output='';
+//     datas.forEach((data,index)=>{
+//         output += `<li>${data.name}</li>`;
+//     })
+//     document.body.innerHTML=output;
+// }, 2000);
+// }
+
+
+// function createData(newdata,callback){
+// setTimeout(() => {
+//     datas.push(newdata);
+//     callback();
+// }, 3000);
+// // document.write(datas);
+
+// }
+
+// createData({name:"iftikaar",profession:"software-engineer"},getData)
+
+
+
+// apply promises on this functions to solve the problem-----------
+
+
+// function getData(){
+
+// setTimeout(() => {
+// let output='';
+//     datas.forEach((data,index)=>{
+//         output += `<li>${data.name}</li>`;
+//     })
+//     document.body.innerHTML=output;
+// }, 2000);
+// }
+
+
+// function createData(newdata){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             datas.push(newdata);
+//             let error = false;
+//             if(!error){
+//                 resolve("sb kuch theekhai ");
+//             }else{
+//                 reject("sb kuch theekhai ");
+
+//             }
+//         }, 4000);
+//     })
+
+
+
+// }
+
+// createData({name:"iftikaar",profession:"software-engineer"})
+// .then(getData).catch((error)=>{
+//     console.log("kuch theek nhi hai ");
+// })
+
+
+// solve the problem using async and await 
+
+
+function getData(){
+
+setTimeout(() => {
+let output='';
+    datas.forEach((data,index)=>{
+        output += `<li>${data.name}</li>`;
+    })
+    document.body.innerHTML=output;
+}, 2000);
+}
+
+
+function createData(newdata){
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            datas.push(newdata);
+            let error = false;
+            if(!error){
+                resolve("sb kuch theekhai ");
+            }else{
+                reject("sb kuch theekhai ");
+
+            }
+        }, 4000);
+    })
+
+
+
+}
+
+// Async and await 
+async function start(){
+    await createData({name:"iftikaar",profession:"software-engineer"});
+    getData();
+}
+start();
+
+
+</script>
+</body>
+</html>
